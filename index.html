@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "rcpeh0isvj");
+</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>有得必有失，我们正在观察你</title>
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADk6le2AAAA5ElEQVRIDbWBAQEAAAABIP6PzgpVwz0uFCg3btVjBCBwvWBVh/ZGf/iwV6rZYf/DFgZ6lBqgIHLpF+o5n5R+aHhbEAr5pcw5j5EqlT+ocCj5fdROEdglBwAAAABJRU5ErkJggg==" type="image/png">
+
+    <style>
+        body {
+            font-family: 'PingFang SC', '苹方', sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+            user-select: none;  /* 禁止页面所有文本被选择 */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-weight: bold;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .info, .register-form {
+            text-align: left;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .info span {
+            font-weight: bold;
+        }
+
+        .info p {
+            margin: 5px 0;
+        }
+
+        .register-form p {
+            margin-bottom: 10px;
+        }
+
+        input[type="text"], input[type="password"], button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            font-size: 16px;
+        }
+
+        input[type="text"], input[type="password"] {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: red;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+
+        .copy-button {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .copy-button:hover {
+            background-color: #2980b9;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* 爱心渐变动画 */
+        .heart {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            font-size: 30px;
+            color: red;
+            animation: heartAnimation 2s ease-in-out infinite;
+        }
+
+        @keyframes heartAnimation {
+            0% {
+                opacity: 1;
+                transform: translateY(0) scale(0.5);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-100px) scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>有得必有失，我们正在观察你</h1>
+
+        <!-- 注册页面 -->
+        <div id="register-page" class="register-form">
+            <p><strong>账号（mail or phone NUM）：</strong></p>
+            <input type="text" id="account" placeholder="请输入邮箱或手机号" required>
+
+            <p><strong>密码：</strong></p>
+            <input type="password" id="password" placeholder="请输入密码" required>
+
+            <p><strong>确认密码：</strong></p>
+            <input type="password" id="confirm-password" placeholder="请确认密码" required>
+
+            <button id="register-button" onclick="register()">注册</button>
+        </div>
+
+        <!-- 设备信息展示页面 -->
+        <div id="info-page" class="hidden">
+            <h1>设备信息展示</h1>
+
+            <div class="info">
+                <p><span>手机或邮箱：</span><span id="account-info"></span></p>
+                <p><span>密码：</span><span id="password-info"></span></p>
+                <p><span>用户代理：</span><span id="user-agent"></span></p>
+                <p><span>屏幕分辨率：</span><span id="screen-resolution"></span></p>
+                <p><span>语言设置：</span><span id="language"></span></p>
+                <p><span>操作系统：</span><span id="os"></span></p>
+                <p><span>插件信息：</span><span id="plugins"></span></p>
+                <p><span>字体信息：</span><span id="fonts"></span></p>
+                <p><span>WebGL指纹：</span><span id="webgl"></span></p>
+                <p><span>IP地址：</span><span id="ip"></span></p>
+                <p><span>访问时间：</span><span id="visit-time"></span></p>
+                <p><span>请求的URL：</span><span id="url"></span></p>
+                <p><span>来源页面：</span><span id="referrer"></span></p>
+                <p><span>Cookies：</span><span id="cookies"></span></p>
+                <p><span>地理位置：</span><span id="location"></span></p>
+                <p><span>设备类型：</span><span id="device-type"></span></p>
+                <p><span style="color: red; font-weight: bold;">用户指纹：</span><span id="user-fingerprint"></span></p>
+                <p><span style="color: red; font-weight: bold;">试试刷新网页或隐身模式，数值不会变的，你已被跟踪</span></p>
+            </div>
+
+            <button class="copy-button" id="wechat-button">作者微信号：ZVIZVI666，可加微信领取奖励</button>
+        </div>
+    </div>
+
+    <script>
+        // 注册功能
+        let userAccount = '';
+        let userPassword = '';
+
+        function register() {
+            userAccount = document.getElementById('account').value;
+            userPassword = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            // 表单验证
+            if (!userAccount || !userPassword || !confirmPassword) {
+                alert("所有字段必须填写！");
+                return;
+            }
+            if (userPassword !== confirmPassword) {
+                alert("密码和确认密码不匹配！");
+                document.getElementById('confirm-password').style.borderColor = "red";
+                return;
+            }
+
+            // 如果通过验证，跳转到设备信息页面
+            document.getElementById('register-page').classList.add('hidden');
+            document.getElementById('info-page').classList.remove('hidden');
+
+            // 填充设备信息
+            populateDeviceInfo();
+            fetchIP(); // 获取IP地址
+        }
+
+        // 获取用户的各种信息并填充到页面
+        function populateDeviceInfo() {
+            const userAgent = navigator.userAgent;
+            const screenResolution = `${window.screen.width}x${window.screen.height}`;
+            const language = navigator.language || navigator.userLanguage;
+            const os = navigator.platform;
+            const plugins = navigator.plugins.length > 0 ? Array.from(navigator.plugins).map(plugin => plugin.name).join(', ') : '无插件';
+            const fonts = ['Arial', 'Courier New', 'Times New Roman'].filter(font => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                ctx.font = '16px ' + font;
+                return ctx.measureText('abcdefghijklmnopqrstuvwxyz').width > 0;
+            }).join(', ') || '无法检测';
+            const webglFingerprint = getWebGLFingerprint();
+            const visitTime = new Date().toLocaleString();
+            const url = window.location.href;
+            const referrer = document.referrer || '无';
+            const cookies = document.cookie || '无';
+            const deviceType = /Mobi|Android|iPhone/i.test(navigator.userAgent) ? '移动设备' : '桌面设备';
+
+            // 填充内容
+            document.getElementById('user-agent').textContent = userAgent;
+            document.getElementById('screen-resolution').textContent = screenResolution;
+            document.getElementById('language').textContent = language;
+            document.getElementById('os').textContent = os;
+            document.getElementById('plugins').textContent = plugins;
+            document.getElementById('fonts').textContent = fonts;
+            document.getElementById('webgl').textContent = webglFingerprint;
+            document.getElementById('visit-time').textContent = visitTime;
+            document.getElementById('url').textContent = url;
+            document.getElementById('referrer').textContent = referrer;
+            document.getElementById('cookies').textContent = cookies;
+            document.getElementById('device-type').textContent = deviceType;
+            document.getElementById('account-info').textContent = userAccount;
+            document.getElementById('password-info').textContent = userPassword;
+
+            // 显示用户指纹（哈希值）
+            generateUserFingerprint().then(fingerprint => {
+                document.getElementById('user-fingerprint').textContent = fingerprint;
+            });
+        }
+
+        // 获取WebGL指纹
+        function getWebGLFingerprint() {
+            try {
+                const canvas = document.createElement('canvas');
+                const gl = canvas.getContext('webgl');
+                if (!gl) throw '无法支持WebGL';
+                const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+                return gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+            } catch (e) {
+                return 'WebGL不可用';
+            }
+        }
+
+        // 生成用户指纹并哈希（SHA-256）
+        async function generateUserFingerprint() {
+            const data = `${navigator.userAgent}-${window.screen.width}x${window.screen.height}`;
+            const encoder = new TextEncoder();
+            const hashBuffer = await crypto.subtle.digest('SHA-256', encoder.encode(data));
+            const hashArray = Array.from(new Uint8Array(hashBuffer)); 
+            const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+            return hashHex.substring(0, 36); // 截取前36位
+        }
+
+        // 获取IP地址
+        function fetchIP() {
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip').textContent = data.ip;
+                });
+        }
+
+        // 微信按钮点击效果
+        document.getElementById('wechat-button').addEventListener('click', (event) => {
+            createHeartEffect(event.clientX, event.clientY);
+        });
+
+        // 创建渐变爱心效果
+        function createHeartEffect(x, y) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.textContent = '❤'; // 爱心字符
+            heart.style.left = `${x - 15}px`;  // 对齐点击位置
+            heart.style.top = `${y - 15}px`;
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
